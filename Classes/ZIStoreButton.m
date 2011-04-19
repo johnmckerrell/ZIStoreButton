@@ -28,6 +28,9 @@
 
 @implementation ZIStoreButton
 
+@synthesize buyTarget = _buyTarget;
+@synthesize buyAction = _buyAction;
+
 -(void)setBuyBlock:(ActionBlock) action {
 	_actionBlock = Block_copy(action);
 }
@@ -118,6 +121,15 @@
 		
 	animation.fromValue = (!self.selected) ? greenColors : blueColors;
 	animation.toValue = (!self.selected) ? blueColors : greenColors;
+    
+    if (selected) {
+        [_originalTitle release];
+        _originalTitle = [[self titleForState:UIControlStateNormal] retain];
+        [self setTitle:ZI_BUY_NOW_TITLE forState:UIControlStateNormal];
+    } else if(_originalTitle) {
+        [self setTitle:_originalTitle forState:UIControlStateNormal];
+        [_originalTitle release]; _originalTitle = nil;
+    }
 	
 	animation.duration = 0.25;
 	animation.removedOnCompletion = NO;
@@ -157,10 +169,10 @@
 
 
 - (IBAction) pressButton:(id)sender {
-	if (isBlued) {
+	if (self.selected) {
 		[self callActionBlock:sender];
-		[sender setSelected:NO];
-		isBlued = NO;
+		//[sender setSelected:NO];
+		//isBlued = NO;
 	} else {
 		
 		[sender setSelected:YES];
@@ -178,6 +190,9 @@
 
 - (void)dealloc {
 	Block_release(_actionBlock);
+    [_originalTitle release]; _originalTitle = nil;
+    self.buyTarget = nil;
+    
     [super dealloc];
 }
 

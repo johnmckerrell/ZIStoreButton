@@ -36,7 +36,13 @@ typedef void (^ActionBlock)();
 	CAGradientLayer *innerLayer3;
 	BOOL isBlued;
 	ActionBlock _actionBlock;
+    NSString *_originalTitle;
+    id _buyTarget;
+    SEL _buyAction;
 }
+
+@property (nonatomic, assign) id buyTarget;
+@property (nonatomic, assign) SEL buyAction;
 
 -(void)setBuyBlock:(ActionBlock)action;
 
