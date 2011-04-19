@@ -60,13 +60,13 @@
 		CAGradientLayer *bevelLayer2 = [CAGradientLayer layer];
 		bevelLayer2.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.4 alpha:1.0] CGColor], [[UIColor whiteColor] CGColor], nil];
 		bevelLayer2.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-		bevelLayer2.cornerRadius = 5.0;
+		bevelLayer2.cornerRadius = 4.0;
 		bevelLayer2.needsDisplayOnBoundsChange = YES;
 		
 		CAGradientLayer *innerLayer2 = [CAGradientLayer layer];
 		innerLayer2.colors = [NSArray arrayWithObjects:(id)[[UIColor darkGrayColor] CGColor], [[UIColor lightGrayColor] CGColor], nil];
 		innerLayer2.frame = CGRectMake(0.5, 0.5, CGRectGetWidth(frame) - 1.0, CGRectGetHeight(frame) - 1.0);
-		innerLayer2.cornerRadius = 4.6;
+		innerLayer2.cornerRadius = 3.6;
 		innerLayer2.needsDisplayOnBoundsChange = YES;
 		
 		UIColor *blueOne		= [UIColor colorWithRed:0.306 green:0.380 blue:0.547 alpha:1.000];
@@ -80,7 +80,7 @@
 		innerLayer3.colors = blueColors;
 		innerLayer3.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:0.500], [NSNumber numberWithFloat:0.5001], [NSNumber numberWithFloat:1.0], nil];		
 		innerLayer3.frame = CGRectMake(0.75, 0.75, CGRectGetWidth(frame) - 1.5, CGRectGetHeight(frame) - 1.5);
-		innerLayer3.cornerRadius = 4.5;
+		innerLayer3.cornerRadius = 3.5;
 		innerLayer3.needsDisplayOnBoundsChange = YES;
 		
 		[self.layer addSublayer:bevelLayer2];

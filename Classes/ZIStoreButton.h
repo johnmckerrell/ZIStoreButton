@@ -27,7 +27,7 @@
 
 #define ZI_BUY_NOW_TITLE @"Buy Now"
 #define ZI_MAX_WIDTH 120.0f
-#define ZI_PADDING 10.0f
+#define ZI_PADDING 15.0f
 
 typedef void (^ActionBlock)();
 
