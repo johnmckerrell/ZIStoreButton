@@ -37,6 +37,9 @@
 
 -(void) callActionBlock:(id)sender{
 	if (_actionBlock) _actionBlock();
+    if (self.buyTarget) {
+        [self.buyTarget performSelector:self.buyAction withObject:self];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame {
