@@ -37,10 +37,12 @@ typedef void (^ActionBlock)();
 	BOOL isBlued;
 	ActionBlock _actionBlock;
     NSString *_originalTitle;
+    NSString *_buyTitle;
     id _buyTarget;
     SEL _buyAction;
 }
 
+@property (nonatomic, retain) NSString *buyTitle;
 @property (nonatomic, assign) id buyTarget;
 @property (nonatomic, assign) SEL buyAction;
 

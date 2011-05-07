@@ -28,6 +28,7 @@
 
 @implementation ZIStoreButton
 
+@synthesize buyTitle = _buyTitle;
 @synthesize buyTarget = _buyTarget;
 @synthesize buyAction = _buyAction;
 
@@ -45,6 +46,7 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code
+        self.buyTitle = ZI_BUY_NOW_TITLE;
 		_actionBlock = nil;
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
@@ -53,7 +55,7 @@
 		
 		isBlued = NO;
 		
-		[self setTitle:ZI_BUY_NOW_TITLE forState:UIControlStateSelected];
+		[self setTitle:self.buyTitle forState:UIControlStateSelected];
 		[self setTitleShadowColor:[UIColor colorWithWhite:0.200 alpha:1.000] forState:UIControlStateNormal];
 		[self setTitleShadowColor:[UIColor colorWithWhite:0.200 alpha:1.000] forState:UIControlStateSelected];
 		[self.titleLabel setShadowOffset:CGSizeMake(0.0, -0.6)];
@@ -128,7 +130,8 @@
     if (selected) {
         [_originalTitle release];
         _originalTitle = [[self titleForState:UIControlStateNormal] retain];
-        [self setTitle:ZI_BUY_NOW_TITLE forState:UIControlStateNormal];
+        [self setTitle:self.buyTitle forState:UIControlStateNormal];
+        [self setTitle:self.buyTitle forState:UIControlStateSelected];
     } else if(_originalTitle) {
         [self setTitle:_originalTitle forState:UIControlStateNormal];
         [_originalTitle release]; _originalTitle = nil;
@@ -195,6 +198,7 @@
 	Block_release(_actionBlock);
     [_originalTitle release]; _originalTitle = nil;
     self.buyTarget = nil;
+    self.buyTitle = nil;
     
     [super dealloc];
 }
